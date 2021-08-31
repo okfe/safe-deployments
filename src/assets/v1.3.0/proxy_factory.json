@@ -1,20 +1,20 @@
 {
-  "defaultAddress": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
+  "defaultAddress": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
   "released": true,
   "contractName": "GnosisSafeProxyFactory",
   "version": "1.3.0",
   "networkAddresses": {
-    "1": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "4": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "42": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "5": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "56": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "100": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "137": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "246": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "4002": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "42161": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd",
-    "73799": "0x19AA381079f2EaAa68aCeE82707Da1d8719e44Dd"
+    "1": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "4": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "42": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "5": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "56": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "100": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "137": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "246": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "4002": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "42161": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015",
+    "73799": "0x61D411013c2dCAa21fFe91D9acfFb88D8F328015"
   },
   "abi": [
     {
@@ -24,6 +24,12 @@
           "indexed": false,
           "internalType": "contract GnosisSafeProxy",
           "name": "proxy",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "singleton",
           "type": "address"
         }
       ],
@@ -37,7 +43,7 @@
         {
           "indexed": false,
           "internalType": "address",
-          "name": "masterCopy",
+          "name": "singleton",
           "type": "address"
         },
         {
@@ -60,7 +66,7 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [],
       "name": "proxyRuntimeCode",
       "outputs": [
@@ -75,7 +81,7 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [],
       "name": "proxyCreationCode",
       "outputs": [
@@ -95,7 +101,7 @@
         {
           "indexed": false,
           "internalType": "address",
-          "name": "_mastercopy",
+          "name": "_singleton",
           "type": "address"
         },
         {
@@ -129,7 +135,7 @@
         {
           "indexed": false,
           "internalType": "address",
-          "name": "_mastercopy",
+          "name": "_singleton",
           "type": "address"
         },
         {
@@ -169,7 +175,7 @@
         {
           "indexed": false,
           "internalType": "address",
-          "name": "_mastercopy",
+          "name": "_singleton",
           "type": "address"
         },
         {

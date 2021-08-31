@@ -1,20 +1,20 @@
 {
-  "defaultAddress": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
+  "defaultAddress": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
   "released": true,
   "contractName": "GnosisSafe",
   "version": "1.3.0",
   "networkAddresses": {
-    "1": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "4": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "42": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "5": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "56": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "100": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "137": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "246": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "4002": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "42161": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff",
-    "73799": "0xaCd74A27D348F7d834c46A327949fa7B777B19ff"
+    "1": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "4": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "42": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "5": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "56": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "100": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "137": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "246": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "4002": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "42161": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6",
+    "73799": "0xcaC71889BE5C1e792050bA37C1C4d04905bebCe6"
   },
   "abi": [
     {
@@ -64,11 +64,25 @@
         {
           "indexed": false,
           "internalType": "address",
-          "name": "masterCopy",
+          "name": "handler",
           "type": "address"
         }
       ],
-      "name": "ChangedMasterCopy",
+      "name": "ChangedFallbackHandler",
+      "payable": false,
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "guard",
+          "type": "address"
+        }
+      ],
+      "name": "ChangedGuard",
       "payable": false,
       "type": "event"
     },
@@ -91,7 +105,7 @@
       "inputs": [
         {
           "indexed": false,
-          "internalType": "contract Module",
+          "internalType": "address",
           "name": "module",
           "type": "address"
         }
@@ -105,7 +119,7 @@
       "inputs": [
         {
           "indexed": false,
-          "internalType": "contract Module",
+          "internalType": "address",
           "name": "module",
           "type": "address"
         }
@@ -201,6 +215,64 @@
       "inputs": [
         {
           "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "SafeReceived",
+      "payable": false,
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "initiator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address[]",
+          "name": "owners",
+          "type": "address[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "threshold",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "initializer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "fallbackHandler",
+          "type": "address"
+        }
+      ],
+      "name": "SafeSetup",
+      "payable": false,
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "indexed": true,
           "internalType": "bytes32",
           "name": "msgHash",
           "type": "bytes32"
@@ -212,27 +284,26 @@
     },
     {
       "constant": false,
-      "payable": true,
-      "stateMutability": "payable",
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fee",
+          "type": "uint256"
+        }
+      ],
+      "name": "testFee",
+      "payable": false,
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "fallback"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "NAME",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
+      "constant": false,
       "inputs": [],
       "name": "VERSION",
       "outputs": [
@@ -269,7 +340,7 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
           "indexed": false,
@@ -301,22 +372,6 @@
       "inputs": [
         {
           "indexed": false,
-          "internalType": "address",
-          "name": "_masterCopy",
-          "type": "address"
-        }
-      ],
-      "name": "changeMasterCopy",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "indexed": false,
           "internalType": "uint256",
           "name": "_threshold",
           "type": "uint256"
@@ -333,13 +388,13 @@
       "inputs": [
         {
           "indexed": false,
-          "internalType": "contract Module",
+          "internalType": "address",
           "name": "prevModule",
           "type": "address"
         },
         {
           "indexed": false,
-          "internalType": "contract Module",
+          "internalType": "address",
           "name": "module",
           "type": "address"
         }
@@ -351,26 +406,11 @@
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "domainSeparator",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "constant": false,
       "inputs": [
         {
           "indexed": false,
-          "internalType": "contract Module",
+          "internalType": "address",
           "name": "module",
           "type": "address"
         }
@@ -467,22 +507,7 @@
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "getModules",
-      "outputs": [
-        {
-          "internalType": "address[]",
-          "name": "",
-          "type": "address[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
           "indexed": false,
@@ -515,7 +540,7 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [],
       "name": "getOwners",
       "outputs": [
@@ -530,7 +555,35 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "offset",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "length",
+          "type": "uint256"
+        }
+      ],
+      "name": "getStorageAt",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
       "inputs": [],
       "name": "getThreshold",
       "outputs": [
@@ -545,11 +598,11 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
           "indexed": false,
-          "internalType": "contract Module",
+          "internalType": "address",
           "name": "module",
           "type": "address"
         }
@@ -567,7 +620,7 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
           "indexed": false,
@@ -589,7 +642,7 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [],
       "name": "nonce",
       "outputs": [
@@ -648,7 +701,23 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "guard",
+          "type": "address"
+        }
+      ],
+      "name": "setGuard",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
       "inputs": [
         {
           "indexed": false,
@@ -667,6 +736,28 @@
       ],
       "payable": false,
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "targetContract",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "calldataPayload",
+          "type": "bytes"
+        }
+      ],
+      "name": "simulateAndRevert",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -696,6 +787,12 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "constant": false,
+      "payable": false,
+      "stateMutability": "payable",
+      "type": "receive"
     },
     {
       "constant": false,
@@ -827,8 +924,70 @@
           "type": "bool"
         }
       ],
-      "payable": true,
+      "payable": false,
       "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "dataHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "signatures",
+          "type": "bytes"
+        }
+      ],
+      "name": "checkSignatures",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "dataHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "signatures",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "requiredSignatures",
+          "type": "uint256"
+        }
+      ],
+      "name": "checkNSignatures",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -889,59 +1048,23 @@
     },
     {
       "constant": false,
-      "inputs": [
+      "inputs": [],
+      "name": "getChainId",
+      "outputs": [
         {
-          "indexed": false,
-          "internalType": "bytes",
-          "name": "_data",
-          "type": "bytes"
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
-      "name": "signMessage",
-      "outputs": [],
       "payable": false,
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "constant": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "bytes",
-          "name": "_data",
-          "type": "bytes"
-        },
-        {
-          "indexed": false,
-          "internalType": "bytes",
-          "name": "_signature",
-          "type": "bytes"
-        }
-      ],
-      "name": "isValidSignature",
-      "outputs": [
-        {
-          "internalType": "bytes4",
-          "name": "",
-          "type": "bytes4"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "bytes",
-          "name": "message",
-          "type": "bytes"
-        }
-      ],
-      "name": "getMessageHash",
+      "inputs": [],
+      "name": "domainSeparator",
       "outputs": [
         {
           "internalType": "bytes32",
@@ -954,7 +1077,7 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
           "indexed": false,
@@ -1030,7 +1153,7 @@
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
           "indexed": false,
